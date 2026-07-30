@@ -1,0 +1,35 @@
+services:
+
+  taxi-route-recommender:
+
+    container_name: taxi-route-recommender
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: taxi-route-recommender:1.0.0
+
+    working_dir: /app
+
+    command: python scripts/run_pipeline.py
+
+    ports:
+      - "8888:8888"
+
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./output:/app/output
+      - ./figures:/app/figures
+      - ./logs:/app/logs
+      - ./configs:/app/configs
+
+    environment:
+      PYTHONUNBUFFERED: "1"
+
+    restart: unless-stopped
+
+    stdin_open: true
+
+    tty: true

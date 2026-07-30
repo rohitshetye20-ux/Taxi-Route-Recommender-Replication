@@ -1,0 +1,94 @@
+# ==============================================================================
+# CODEOWNERS
+#
+# Taxi Route Recommender System
+#
+# Author  : Rohit Shetye
+# Version : 1.0.0
+# License : MIT
+#
+# Description:
+# Defines code ownership for automatic review assignment.
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Repository Owner
+# ------------------------------------------------------------------------------
+
+* https://github.com/rohitshetye20-ux
+
+# ------------------------------------------------------------------------------
+# Documentation
+# ------------------------------------------------------------------------------
+
+/docs/ https://github.com/rohitshetye20-ux
+
+# ------------------------------------------------------------------------------
+# Source Code
+# ------------------------------------------------------------------------------
+
+/src/ https://github.com/rohitshetye20-ux
+
+# ------------------------------------------------------------------------------
+# Scripts
+# ------------------------------------------------------------------------------
+
+/scripts/ https://github.com/rohitshetye20-ux
+
+# ------------------------------------------------------------------------------
+# Tests
+# ------------------------------------------------------------------------------
+
+/tests/ https://github.com/rohitshetye20-ux
+
+# ------------------------------------------------------------------------------
+# Configuration
+# ------------------------------------------------------------------------------
+
+/configs/ https://github.com/rohitshetye20-ux
+
+# ------------------------------------------------------------------------------
+# GitHub Workflows
+# ------------------------------------------------------------------------------
+
+/.github/ https://github.com/rohitshetye20-ux
+
+# ------------------------------------------------------------------------------
+# Docker
+# ------------------------------------------------------------------------------
+
+Dockerfile https://github.com/rohitshetye20-ux
+
+docker-compose.yml https://github.com/rohitshetye20-ux
+
+# ------------------------------------------------------------------------------
+# Documentation Files
+# ------------------------------------------------------------------------------
+
+README.md https://github.com/rohitshetye20-ux
+
+CHANGELOG.md https://github.com/rohitshetye20-ux
+
+CONTRIBUTING.md https://github.com/rohitshetye20-ux
+
+CODE_OF_CONDUCT.md https://github.com/rohitshetye20-ux
+
+SECURITY.md https://github.com/rohitshetye20-ux
+
+LICENSE https://github.com/rohitshetye20-ux
+
+# ------------------------------------------------------------------------------
+# Python Packaging
+# ------------------------------------------------------------------------------
+
+requirements.txt https://github.com/rohitshetye20-ux
+
+pyproject.toml https://github.com/rohitshetye20-ux
+
+.pre-commit-config.yaml https://github.com/rohitshetye20-ux
+
+Makefile https://github.com/rohitshetye20-ux
+
+.dockerignore https://github.com/rohitshetye20-ux
+
+.gitignore https://github.com/rohitshetye20-ux

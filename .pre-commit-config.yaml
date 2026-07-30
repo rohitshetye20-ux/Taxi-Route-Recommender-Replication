@@ -1,0 +1,105 @@
+# ==============================================================================
+# Taxi Route Recommender System
+# Pre-Commit Configuration
+#
+# Author  : Rohit Shetye
+# Version : 1.0.0
+# License : MIT
+#
+# Description:
+# Automatically checks and formats code before every Git commit.
+# ==============================================================================
+
+repos:
+
+# ==============================================================================
+# General File Checks
+# ==============================================================================
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+
+  rev: v5.0.0
+
+  hooks:
+
+    - id: trailing-whitespace
+
+    - id: end-of-file-fixer
+
+    - id: check-yaml
+
+    - id: check-added-large-files
+
+    - id: check-merge-conflict
+
+    - id: check-case-conflict
+
+    - id: check-json
+
+    - id: mixed-line-ending
+
+# ==============================================================================
+# Black Formatter
+# ==============================================================================
+
+- repo: https://github.com/psf/black
+
+  rev: 24.8.0
+
+  hooks:
+
+    - id: black
+
+      language_version: python3.10
+
+# ==============================================================================
+# Import Sorting
+# ==============================================================================
+
+- repo: https://github.com/PyCQA/isort
+
+  rev: 5.13.2
+
+  hooks:
+
+    - id: isort
+
+# ==============================================================================
+# Ruff Linter
+# ==============================================================================
+
+- repo: https://github.com/astral-sh/ruff-pre-commit
+
+  rev: v0.6.5
+
+  hooks:
+
+    - id: ruff
+
+      args:
+
+        - --fix
+
+# ==============================================================================
+# Compile Python Files
+# ==============================================================================
+
+- repo: https://github.com/pre-commit/mirrors-mypy
+
+  rev: v1.11.2
+
+  hooks:
+
+    - id: mypy
+
+      additional_dependencies:
+
+        - types-PyYAML
+
+      args:
+
+        - --ignore-missing-imports
+
+# ==============================================================================
+# End
+# ==============================================================================

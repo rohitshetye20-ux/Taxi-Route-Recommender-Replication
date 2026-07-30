@@ -1,0 +1,144 @@
+# ==============================================================================
+# GitHub Actions CI
+#
+# Project : Taxi Route Recommender System
+# Author  : Rohit Shetye
+# Version : 1.0.0
+# License : MIT
+#
+# Description:
+# Continuous Integration workflow for testing the repository.
+# ==============================================================================
+
+name: Taxi Route Recommender CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+  pull_request:
+    branches:
+      - main
+      - master
+
+  workflow_dispatch:
+
+jobs:
+
+  test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+
+      matrix:
+
+        python-version:
+          - "3.10"
+
+    steps:
+
+      # -----------------------------------------------------------
+      # Checkout repository
+      # -----------------------------------------------------------
+
+      - name: Checkout Repository
+
+        uses: actions/checkout@v4
+
+      # -----------------------------------------------------------
+      # Setup Python
+      # -----------------------------------------------------------
+
+      - name: Setup Python
+
+        uses: actions/setup-python@v5
+
+        with:
+
+          python-version: ${{ matrix.python-version }}
+
+      # -----------------------------------------------------------
+      # Cache pip packages
+      # -----------------------------------------------------------
+
+      - name: Cache pip
+
+        uses: actions/cache@v4
+
+        with:
+
+          path: ~/.cache/pip
+
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      # -----------------------------------------------------------
+      # Install dependencies
+      # -----------------------------------------------------------
+
+      - name: Install Dependencies
+
+        run: |
+
+          python -m pip install --upgrade pip
+
+          pip install -r requirements.txt
+
+      # -----------------------------------------------------------
+      # Verify project structure
+      # -----------------------------------------------------------
+
+      - name: Verify Repository
+
+        run: |
+
+          echo "Repository Structure"
+
+          ls -la
+
+      # -----------------------------------------------------------
+      # Run Tests
+      # -----------------------------------------------------------
+
+      - name: Execute Test Suite
+
+        run: |
+
+          pytest tests/
+
+      # -----------------------------------------------------------
+      # Coverage Report
+      # -----------------------------------------------------------
+
+      - name: Generate Coverage
+
+        run: |
+
+          pytest --cov=src tests/
+
+      # -----------------------------------------------------------
+      # Verify Python Source
+      # -----------------------------------------------------------
+
+      - name: Compile Source
+
+        run: |
+
+          python -m compileall src
+
+          python -m compileall scripts
+
+      # -----------------------------------------------------------
+      # Success
+      # -----------------------------------------------------------
+
+      - name: CI Complete
+
+        run: |
+
+          echo "All checks completed successfully."

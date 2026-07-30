@@ -1,0 +1,52 @@
+# =====================================================
+# Taxi Route Recommender
+# Research Reproduction Environment
+# Version 1.0
+# =====================================================
+
+# Core Scientific Computing
+numpy==1.26.4
+scipy==1.13.1
+pandas==2.2.3
+
+# Machine Learning
+tensorflow==2.10.1
+keras==2.10.0
+
+# Graph Processing
+networkx==3.4.2
+
+# Visualization
+matplotlib==3.10.3
+
+# Jupyter Environment
+notebook==7.4.4
+ipykernel==6.29.5
+jupyterlab==4.4.4
+
+# Progress Bars
+tqdm==4.67.1
+
+# Report Generation
+python-docx==1.2.0
+
+# Presentation Generation
+python-pptx==1.0.2
+
+# Image Processing
+Pillow==11.3.0
+
+# Markdown Processing
+markdown==3.8.2
+
+# YAML Support
+PyYAML==6.0.2
+
+# Date Utilities
+python-dateutil==2.9.0.post0
+
+# Packaging Utilities
+packaging==25.0
+
+# Windows Terminal Colors
+colorama==0.4.6

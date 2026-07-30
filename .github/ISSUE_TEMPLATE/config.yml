@@ -1,0 +1,10 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Project Documentation
+    url: https://github.com/rohitshetye20-ux
+    about: Read the documentation before opening an issue.
+
+  - name: Discussions / Questions
+    url: https://github.com/rohitshetye20-ux
+    about: Ask questions or discuss ideas with the community.

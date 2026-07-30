@@ -1,0 +1,167 @@
+# ==============================================================================
+# pyproject.toml
+#
+# Taxi Route Recommender System
+#
+# Author  : Rohit Shetye
+# Version : 1.0.0
+# License : MIT
+#
+# Description:
+# Modern Python project configuration.
+# ==============================================================================
+
+[build-system]
+requires = [
+    "setuptools>=68.0",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "taxi-route-recommender"
+version = "1.0.0"
+
+description = "A Cost-Effective Sequential Route Recommender System for Taxi Drivers - Research Replication Project"
+
+readme = "README.md"
+
+requires-python = ">=3.10"
+
+license = { text = "MIT" }
+
+authors = [
+    { name = "Rohit Shetye" }
+]
+
+keywords = [
+    "machine-learning",
+    "graph-neural-network",
+    "gcn",
+    "lstm",
+    "taxi",
+    "route-recommendation",
+    "deep-learning",
+    "research",
+    "transportation",
+    "trajectory-prediction"
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development"
+]
+
+dependencies = [
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "networkx",
+    "scikit-learn",
+    "tensorflow",
+    "pytest",
+    "pytest-cov",
+    "jupyter"
+]
+
+[project.urls]
+Homepage = "https://github.com/rohitshetye20-ux/Taxi-Route-Recommender-Replication"
+
+Repository = "https://github.com/rohitshetye20-ux/Taxi-Route-Recommender-Replication"
+
+Documentation = "https://github.com/rohitshetye20-ux/Taxi-Route-Recommender-Replication/tree/main/docs"
+
+Issues = "https://github.com/rohitshetye20-ux/Taxi-Route-Recommender-Replication/issues"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = [
+    "src*",
+    "scripts*"
+]
+
+# ==============================================================================
+# Pytest
+# ==============================================================================
+
+[tool.pytest.ini_options]
+
+testpaths = [
+    "tests"
+]
+
+python_files = [
+    "test_*.py"
+]
+
+addopts = """
+-v
+--cov=src
+--cov-report=term-missing
+"""
+
+# ==============================================================================
+# Coverage
+# ==============================================================================
+
+[tool.coverage.run]
+
+source = [
+    "src"
+]
+
+omit = [
+    "tests/*"
+]
+
+[tool.coverage.report]
+
+show_missing = true
+
+skip_empty = true
+
+# ==============================================================================
+# Black
+# ==============================================================================
+
+[tool.black]
+
+line-length = 88
+
+target-version = [
+    "py310"
+]
+
+# ==============================================================================
+# isort
+# ==============================================================================
+
+[tool.isort]
+
+profile = "black"
+
+line_length = 88
+
+# ==============================================================================
+# Ruff
+# ==============================================================================
+
+[tool.ruff]
+
+line-length = 88
+
+target-version = "py310"
+
+# ==============================================================================
+# End
+# ==============================================================================
