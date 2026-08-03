@@ -1,13 +1,15 @@
 # ==============================================================================
-# GitHub Actions CI
+# GitHub Actions - Continuous Integration
 #
-# Project : Taxi Route Recommender System
-# Author  : Rohit Shetye
-# Version : 1.0.0
-# License : MIT
+# Project     : Taxi Route Recommender System
+# Repository  : Taxi-Route-Recommender-Replication
+# Author      : Rohit Shetye
+# Version     : 2.0.0
+# Python      : 3.10
+# License     : MIT
 #
 # Description:
-# Continuous Integration workflow for testing the repository.
+# Enterprise-grade CI workflow for validating the research replication project.
 # ==============================================================================
 
 name: Taxi Route Recommender CI
@@ -16,129 +18,139 @@ on:
   push:
     branches:
       - main
-      - master
 
   pull_request:
     branches:
       - main
-      - master
 
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
 
   test:
 
+    name: Python ${{ matrix.python-version }}
+
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
 
       matrix:
-
         python-version:
           - "3.10"
 
     steps:
 
-      # -----------------------------------------------------------
-      # Checkout repository
-      # -----------------------------------------------------------
+      # -------------------------------------------------------------------------
+      # Checkout Repository
+      # -------------------------------------------------------------------------
 
       - name: Checkout Repository
 
         uses: actions/checkout@v4
 
-      # -----------------------------------------------------------
+      # -------------------------------------------------------------------------
       # Setup Python
-      # -----------------------------------------------------------
+      # -------------------------------------------------------------------------
 
       - name: Setup Python
 
         uses: actions/setup-python@v5
 
         with:
-
           python-version: ${{ matrix.python-version }}
 
-      # -----------------------------------------------------------
-      # Cache pip packages
-      # -----------------------------------------------------------
+      # -------------------------------------------------------------------------
+      # Cache pip
+      # -------------------------------------------------------------------------
 
-      - name: Cache pip
+      - name: Cache Python Dependencies
 
         uses: actions/cache@v4
 
         with:
-
           path: ~/.cache/pip
 
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          key: >
+            ${{ runner.os }}-${{ matrix.python-version }}-${{
+            hashFiles('requirements.txt') }}
 
           restore-keys: |
-            ${{ runner.os }}-pip-
+            ${{ runner.os }}-${{ matrix.python-version }}-
 
-      # -----------------------------------------------------------
-      # Install dependencies
-      # -----------------------------------------------------------
+      # -------------------------------------------------------------------------
+      # Upgrade pip
+      # -------------------------------------------------------------------------
+
+      - name: Upgrade pip
+
+        run: |
+          python -m pip install --upgrade pip
+
+      # -------------------------------------------------------------------------
+      # Install Project Dependencies
+      # -------------------------------------------------------------------------
 
       - name: Install Dependencies
 
         run: |
-
-          python -m pip install --upgrade pip
-
           pip install -r requirements.txt
 
-      # -----------------------------------------------------------
-      # Verify project structure
-      # -----------------------------------------------------------
+      # -------------------------------------------------------------------------
+      # Verify Repository Structure
+      # -------------------------------------------------------------------------
 
       - name: Verify Repository
 
         run: |
+          echo "Repository Root"
+          pwd
 
-          echo "Repository Structure"
-
+          echo ""
+          echo "Repository Contents"
           ls -la
 
-      # -----------------------------------------------------------
-      # Run Tests
-      # -----------------------------------------------------------
+      # -------------------------------------------------------------------------
+      # Execute Test Suite
+      # -------------------------------------------------------------------------
 
-      - name: Execute Test Suite
+      - name: Run Unit Tests
 
         run: |
+          python -m pytest tests/
 
-          pytest tests/
-
-      # -----------------------------------------------------------
+      # -------------------------------------------------------------------------
       # Coverage Report
-      # -----------------------------------------------------------
+      # -------------------------------------------------------------------------
 
-      - name: Generate Coverage
+      - name: Run Coverage
 
         run: |
+          python -m pytest --cov=src --cov-report=term-missing tests/
 
-          pytest --cov=src tests/
-
-      # -----------------------------------------------------------
-      # Verify Python Source
-      # -----------------------------------------------------------
+      # -------------------------------------------------------------------------
+      # Compile Python Source
+      # -------------------------------------------------------------------------
 
       - name: Compile Source
 
         run: |
-
           python -m compileall src
-
           python -m compileall scripts
 
-      # -----------------------------------------------------------
-      # Success
-      # -----------------------------------------------------------
+      # -------------------------------------------------------------------------
+      # Success Message
+      # -------------------------------------------------------------------------
 
       - name: CI Complete
 
         run: |
-
-          echo "All checks completed successfully."
+          echo ""
+          echo "======================================"
+          echo "Taxi Route Recommender CI Passed"
+          echo "Python Version : ${{ matrix.python-version }}"
+          echo "======================================"

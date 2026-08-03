@@ -1,14 +1,16 @@
 # ==============================================================================
 # pyproject.toml
 #
-# Taxi Route Recommender System
-#
-# Author  : Rohit Shetye
-# Version : 1.0.0
-# License : MIT
+# Project      : Taxi Route Recommender System
+# Repository   : Taxi-Route-Recommender-Replication
+# Author       : Rohit Shetye
+# Version      : 2.0.0
+# License      : MIT
+# Python       : 3.10
 #
 # Description:
-# Modern Python project configuration.
+# Modern Python project configuration for packaging, testing,
+# formatting, linting, and continuous integration.
 # ==============================================================================
 
 [build-system]
@@ -18,15 +20,21 @@ requires = [
 ]
 build-backend = "setuptools.build_meta"
 
-[project]
-name = "taxi-route-recommender"
-version = "1.0.0"
+# ==============================================================================
+# Project Metadata
+# ==============================================================================
 
-description = "A Cost-Effective Sequential Route Recommender System for Taxi Drivers - Research Replication Project"
+[project]
+
+name = "taxi-route-recommender"
+
+version = "2.0.0"
+
+description = "Research replication of A Cost-Effective Sequential Route Recommender System for Taxi Drivers"
 
 readme = "README.md"
 
-requires-python = ">=3.10"
+requires-python = ">=3.10,<3.11"
 
 license = { text = "MIT" }
 
@@ -36,42 +44,78 @@ authors = [
 
 keywords = [
     "machine-learning",
+    "deep-learning",
     "graph-neural-network",
     "gcn",
     "lstm",
-    "taxi",
-    "route-recommendation",
-    "deep-learning",
-    "research",
     "transportation",
-    "trajectory-prediction"
+    "trajectory-prediction",
+    "route-recommendation",
+    "taxi",
+    "research-replication"
 ]
 
 classifiers = [
     "Development Status :: 4 - Beta",
-    "Intended Audience :: Science/Research",
     "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
+
     "License :: OSI Approved :: MIT License",
+
     "Operating System :: OS Independent",
+
+    "Topic :: Scientific/Engineering",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
     "Topic :: Software Development"
 ]
 
 dependencies = [
-    "numpy",
-    "pandas",
-    "matplotlib",
-    "networkx",
-    "scikit-learn",
-    "tensorflow",
-    "pytest",
-    "pytest-cov",
-    "jupyter"
+    "numpy==1.26.4",
+    "scipy==1.13.1",
+    "pandas==2.2.3",
+
+    "tensorflow==2.10.1",
+    "keras==2.10.0",
+
+    "networkx==3.4.2",
+
+    "matplotlib==3.10.3",
+
+    "scikit-learn==1.7.1"
 ]
 
+# ==============================================================================
+# Optional Development Dependencies
+# ==============================================================================
+
+[project.optional-dependencies]
+
+dev = [
+
+    "pytest==8.4.1",
+    "pytest-cov==6.2.1",
+
+    "black==25.1.0",
+    "ruff==0.12.8",
+    "isort==6.0.1",
+
+    "build==1.3.0",
+    "twine==6.1.0",
+
+    "jupyterlab==4.4.4",
+    "ipykernel==6.29.5"
+]
+
+# ==============================================================================
+# Project URLs
+# ==============================================================================
+
 [project.urls]
+
 Homepage = "https://github.com/rohitshetye20-ux/Taxi-Route-Recommender-Replication"
 
 Repository = "https://github.com/rohitshetye20-ux/Taxi-Route-Recommender-Replication"
@@ -80,11 +124,18 @@ Documentation = "https://github.com/rohitshetye20-ux/Taxi-Route-Recommender-Repl
 
 Issues = "https://github.com/rohitshetye20-ux/Taxi-Route-Recommender-Replication/issues"
 
+# ==============================================================================
+# Setuptools
+# ==============================================================================
+
 [tool.setuptools]
+
 include-package-data = true
 
 [tool.setuptools.packages.find]
+
 where = ["."]
+
 include = [
     "src*",
     "scripts*"
@@ -104,8 +155,14 @@ python_files = [
     "test_*.py"
 ]
 
+python_functions = [
+    "test_*"
+]
+
 addopts = """
 -v
+-ra
+--strict-markers
 --cov=src
 --cov-report=term-missing
 """
@@ -121,7 +178,8 @@ source = [
 ]
 
 omit = [
-    "tests/*"
+    "tests/*",
+    "**/__pycache__/*"
 ]
 
 [tool.coverage.report]
@@ -163,5 +221,5 @@ line-length = 88
 target-version = "py310"
 
 # ==============================================================================
-# End
+# End of File
 # ==============================================================================
