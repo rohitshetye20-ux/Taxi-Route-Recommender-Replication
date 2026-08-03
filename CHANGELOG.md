@@ -82,6 +82,13 @@ Added an automated presentation framework capable of:
 
 ---
 
+### Known Issues
+
+- Some preprocessing unit tests remain pending implementation.
+- Research execution pipeline scheduled for v3.0.
+
+---
+
 ### Visualization Assets
 
 Created professional technical diagrams including:
